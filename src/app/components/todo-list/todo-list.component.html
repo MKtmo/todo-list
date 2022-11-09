@@ -1,0 +1,60 @@
+<div class="container">
+
+  <h2>Todos List <button class="btn btn-success" (click)="showAddTodoForm()" link="/app-todo">Ajouter</button>
+    </h2>
+    <div class="filtre">
+      <select name="statut">
+        <option name="default" selected>Filtrer par statut</option>
+        <option name="En cours"  value=1>En cours</option>
+        <option name="Terminé" value=2>Terminé</option>
+        <option name="Supprimé"  value=3>Supprimé</option>
+      </select>
+      <button class="date-filter">Date</button>
+    </div>
+
+  <div class="row row-cols-1 row-cols-md-3">
+    <div class="col mb-4" *ngFor="let todo of todos">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ todo.titre | uppercase}}</h5>
+          <p class="card-text">{{ todo.date }}</p>
+          <p class="card-text">{{ todo.statut}}</p>
+          <p class="card-text">{{ todo.description }}</p>
+          <button type="button" class="btn btn-info btn-sm mr-2 modifier" (click)="showEditTodoForm(todo)">Modifier</button>
+          <button type="button" class="btn btn-danger btn-sm" (click)="removeTodo(todo)">Supprimer</button>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div class="container box">
+  <form *ngIf="todoForm">
+    <h2>Ajouter une nouvelle tâche</h2>
+    <p>Titre: <input type="text" name="firstName" /></p>
+    <p>Statut: <select name="statut" value="1"  >
+      <option value="1" default selected>En cours</option>
+      <option value="2">Terminé</option>
+      <option value="3">Supprimé</option>
+    </select></p>
+    <p>Description: <input type="text" name="lastName"  /></p>
+    <p>
+      <button type="button" class="btn btn-primary mr-2" (click)="saveTodo(newTodo)">Valider</button>
+      <button type="button" class="btn btn-warning" (click)="cancelNewTodo()">Annuler</button>
+    </p>
+  </form>
+
+  <form *ngIf="editTodoForm">
+    <h2>Edit Todo Details</h2>
+    <p>Titre: <input type="text" name="firstName" /></p>
+    <p>Statut: <select name="statut" >
+      <option value="1" default selected>En cours</option>
+      <option value="2">Terminé</option>
+      <option value="3">Supprimé</option>
+    </select></p>
+    <p>Description: <input type="text" name="lastName"/></p>
+    <p>
+      <button type="button" class="btn btn-primary mr-2" (click)="updateTodo()">Valider</button>
+      <button type="button" class="btn btn-warning" (click)="cancelEdits()">Annuler</button>
+    </p>
+  </form>
+</div>

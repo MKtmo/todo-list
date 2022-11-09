@@ -1,0 +1,18 @@
+<div class="container box">
+        <form>
+          <h2>Ajouter une nouvelle tâche</h2>
+          <p>Titre: <input type="text" name="firstName" /></p>
+          <p>Statut: <select name="statut" value="1"  >
+            <option value="1" default selected>En cours</option>
+            <option value="2">Terminé</option>
+            <option value="3">Supprimé</option>
+          </select></p>
+          <p>Description: <input type="text" name="lastName"  /></p>
+          <p>
+            <button type="button" class="btn btn-primary mr-2" (click)="saveTodo(newTodo)">Valider</button>
+            <button type="button" class="btn btn-warning" (click)="cancelNewTodo()">Annuler</button>
+          </p>
+        </form>
+      </div>
+
+
